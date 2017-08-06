@@ -4,7 +4,6 @@ package blackbar;
 import Controlador.ControladorBienvenida;
 import Controlador.ControladorLogin;
 import Controlador.ControladorPrincipal;
-import Modelo.Conexion;
 import Vistas.Bienvenida;
 import Vistas.Login;
 import Vistas.Principal;
@@ -12,8 +11,6 @@ import Vistas.Principal;
 public class BlackBar {
 
     public static void main(String[] args) { 
-        
-        Conexion con = new Conexion();
         
         Bienvenida bienvenida = new Bienvenida();
         Login login = new Login();
@@ -32,6 +29,7 @@ public class BlackBar {
         cl.setPrincipal(principal);
         
         cp.setPrincipal(principal);
+        cp.setLogin(login);
         cp.darEventoBotones();
 
         bienvenida.setLocationRelativeTo(null);

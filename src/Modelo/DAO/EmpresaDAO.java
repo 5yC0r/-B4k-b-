@@ -17,10 +17,14 @@ import java.sql.ResultSet;
  * @author MARIANA
  */
 public class EmpresaDAO {
+<<<<<<< HEAD
     
     
     Login login = new Login();
     
+=======
+       
+>>>>>>> 13f3de4cb2e429b42ed35b6b985b1b4115c77e20
     public EmpresaDAO(){
         
     }
@@ -71,7 +75,11 @@ public class EmpresaDAO {
         }
     }
     
+<<<<<<< HEAD
     public void obtenerDatos() throws SQLException{
+=======
+    public void obtenerDatos(Login login) throws SQLException{
+>>>>>>> 13f3de4cb2e429b42ed35b6b985b1b4115c77e20
         Conexion conexion = new Conexion();
         Empresa empresa = new Empresa();
         Connection accesoBD = null;

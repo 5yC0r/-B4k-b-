@@ -95,21 +95,41 @@ INSERT INTO `cliente` (`codCliente`, `tipoCliente`, `tipoDoc`, `numDoc`, `razonS
 CREATE TABLE IF NOT EXISTS `compra` (
   `codCompra` int(11) NOT NULL AUTO_INCREMENT,
   `numeroComprobante` varchar(15) NOT NULL,
+<<<<<<< HEAD
   `proveedor` varchar(20) NOT NULL,
   `vendedor` varchar(20) NOT NULL,
+=======
+  `codProveedor` int(1) NOT NULL,
+  `codEmpleado` int(11) NOT NULL,
+>>>>>>> 13f3de4cb2e429b42ed35b6b985b1b4115c77e20
   `fechaCompra` varchar(12) NOT NULL,
   `tipoPago` varchar(10) NOT NULL,
   `diasPago` int(2) NOT NULL,
   `totalPago` float NOT NULL,
+<<<<<<< HEAD
   PRIMARY KEY (`codCompra`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+=======
+  PRIMARY KEY (`codCompra`),
+  KEY `codProveedor` (`codProveedor`),
+  KEY `fk_compra_proveedor1_idx` (`codProveedor`),
+  KEY `codEmpleado` (`codEmpleado`),
+  KEY `fk_compra_empleado1_idx` (`codEmpleado`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+>>>>>>> 13f3de4cb2e429b42ed35b6b985b1b4115c77e20
 
 --
 -- Volcado de datos para la tabla `compra`
 --
 
+<<<<<<< HEAD
 INSERT INTO `compra` (`codCompra`, `numeroComprobante`, `proveedor`, `vendedor`, `fechaCompra`, `tipoPago`, `diasPago`, `totalPago`) VALUES
 (1, 'asaksjd2325', 'Item 1', 'asdglk{´p{ip', '21/07/2017', 'Credito', 7, 145.5);
+=======
+INSERT INTO `compra` (`codCompra`, `numeroComprobante`, `codProveedor`, `codEmpleado`, `fechaCompra`, `tipoPago`, `diasPago`, `totalPago`) VALUES
+(1, 'asaksjd2325', 1, 4, '21/07/2017', 'Credito', 7, 145.5),
+(2, 'asaksjd2325', 2, 4, '21/07/2017', 'Credito', 7, 145.5);
+>>>>>>> 13f3de4cb2e429b42ed35b6b985b1b4115c77e20
 
 -- --------------------------------------------------------
 
@@ -124,20 +144,34 @@ CREATE TABLE IF NOT EXISTS `comprobante` (
   `coorrelativo` int(12) NOT NULL,
   `igv` int(4) NOT NULL,
   `fechaEmision` varchar(12) NOT NULL,
+<<<<<<< HEAD
   `codCliente` int(11) NOT NULL,
+=======
+>>>>>>> 13f3de4cb2e429b42ed35b6b985b1b4115c77e20
   `codVenta` int(11) NOT NULL,
   `subtotalComprobante` float NOT NULL,
   `totalComprobante` float NOT NULL,
   `estadoComprobante` int(1) NOT NULL DEFAULT '1',
+<<<<<<< HEAD
   PRIMARY KEY (`codComprobante`)
+=======
+  PRIMARY KEY (`codComprobante`),
+    KEY `codVenta` (`codVenta`),
+  KEY `fk_comprobante_venta_idx` (`codVenta`)
+>>>>>>> 13f3de4cb2e429b42ed35b6b985b1b4115c77e20
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Volcado de datos para la tabla `comprobante`
 --
 
+<<<<<<< HEAD
 INSERT INTO `comprobante` (`codComprobante`, `tipoComprobante`, `serie`, `coorrelativo`, `igv`, `fechaEmision`, `codCliente`, `codVenta`, `subtotalComprobante`, `totalComprobante`, `estadoComprobante`) VALUES
 (1, 'Boleta', 1, 1020230, 18, '22/07/2017', 122700312, 1, 12.5, 16.5, 1);
+=======
+INSERT INTO `comprobante` (`codComprobante`, `tipoComprobante`, `serie`, `coorrelativo`, `igv`, `fechaEmision`, `codVenta`, `subtotalComprobante`, `totalComprobante`, `estadoComprobante`) VALUES
+(1, 'Boleta', 1, 1020230, 18, '22/07/2017', 1, 12.5, 16.5, 1);
+>>>>>>> 13f3de4cb2e429b42ed35b6b985b1b4115c77e20
 
 -- --------------------------------------------------------
 
@@ -265,6 +299,7 @@ INSERT INTO `operador` (`codOperador`, `nombreOperador`) VALUES
 
 -- --------------------------------------------------------
 
+<<<<<<< HEAD
 --
 -- Estructura de tabla para la tabla `precios`
 --
@@ -279,12 +314,15 @@ CREATE TABLE IF NOT EXISTS `precios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
+=======
+>>>>>>> 13f3de4cb2e429b42ed35b6b985b1b4115c77e20
 
 --
 -- Estructura de tabla para la tabla `producto`
 --
 
 CREATE TABLE IF NOT EXISTS `producto` (
+<<<<<<< HEAD
   `idProd` int(11) NOT NULL AUTO_INCREMENT,
   `codigoProducto` varchar(20) NOT NULL,
   `nombreProducto` varchar(25) NOT NULL,
@@ -297,30 +335,90 @@ CREATE TABLE IF NOT EXISTS `producto` (
   `numeroBoleta` varchar(20) NOT NULL,
   `fechaRegistro` varchar(12) NOT NULL,
   PRIMARY KEY (`idProd`)
+=======
+  `codProducto` int(11) NOT NULL AUTO_INCREMENT,
+  `codigoProducto` varchar(20) NOT NULL,
+  `nombreProducto` varchar(25) NOT NULL,
+  `marca` varchar(20) NOT NULL,  
+  `descripcion` varchar(40) NOT NULL,
+  `fechaVencimiento` varchar(12) NOT NULL,
+  `stock` int(11) NOT NULL,
+  `puntoPedido` int(11) NOT NULL,
+  `fechaRegistro` varchar(12) NOT NULL,
+  `codCategoria` int(11) NOT NULL,
+  `codProveedor` int(11) NOT NULL,
+  `codEmpleado` int(11) NOT NULL,
+  PRIMARY KEY (`codProducto`),
+  KEY `codCategoria` (`codCategoria`),
+  KEY `fk_producto_categoria1_idx` (`codCategoria`),
+  KEY `codProveedor` (`codProveedor`),
+  KEY `fk_producto_proveedor1_idx` (`codProveedor`),
+  KEY `codEmpleado` (`codEmpleado`),
+  KEY `fk_producto_empleado1_idx` (`codEmpleado`)
+>>>>>>> 13f3de4cb2e429b42ed35b6b985b1b4115c77e20
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Volcado de datos para la tabla `producto`
 --
 
+<<<<<<< HEAD
 INSERT INTO `producto` (`idProd`, `codigoProducto`, `nombreProducto`, `marca`, `descripcion`, `categoria`, `fechaVencimiento`, `stock`, `puntoPedido`, `numeroBoleta`, `fechaRegistro`) VALUES
 (1, 'sdfgh,.', 'fghj,k.lñ-', 'ertyulopñ', 'ertyuiop', 'Snack', '01/07/2017', 20, 10, '15148-122', '19/07/2017'),
 (2, 'sdfghj', '85487jfkdcnv', 'chguyjklkl', 'dfghjklñxcc', 'Bebidas', '30/07/2017', 10, 5, '', '20/07/2017');
 
 -- --------------------------------------------------------
 
+=======
+INSERT INTO `producto` (`codProducto`, `codigoProducto`, `nombreProducto`, `marca`, `descripcion`, `fechaVencimiento`, `stock`, `puntoPedido`, `fechaRegistro`,`codCategoria`,`codProveedor`,`codEmpleado`) VALUES
+(1, '1222,.', 'sublime', 'ertyulopñ', 'ertyuiop', '01/07/2017', 20, 10, '19/07/2017',2,2,2),
+(2, '1243', 'doritos', 'chguyjklkl', 'dfghjklñxcc', '30/07/2017', 10, 5, '20/07/2017',3,1,4);
+
+-- --------------------------------------------------------
+
+
+
+--
+-- Estructura de tabla para la tabla `precios`
+--
+
+CREATE TABLE IF NOT EXISTS `precios` (
+  `codPrecio` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(20) NOT NULL,
+  `valorCosto` float NOT NULL,
+  `valorVenta` float NOT NULL,
+  `codProducto` int(11) NOT NULL,
+  PRIMARY KEY (`codPrecio`),
+     KEY `codProducto` (`codProducto`),
+  KEY `fk_precios_producto1_idx` (`codProducto`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+
+>>>>>>> 13f3de4cb2e429b42ed35b6b985b1b4115c77e20
 --
 -- Estructura de tabla para la tabla `productosadquiridos`
 --
 
+<<<<<<< HEAD
 CREATE TABLE IF NOT EXISTS `productosadquiridos` (
+=======
+CREATE TABLE IF NOT EXISTS `productosAdquiridos` (
+>>>>>>> 13f3de4cb2e429b42ed35b6b985b1b4115c77e20
   `codProdAdqui` int(11) NOT NULL AUTO_INCREMENT,
   `codigo` varchar(15) NOT NULL,
   `nombre` varchar(50) NOT NULL,
   `cantidad` varchar(10) NOT NULL,
   `importe` float NOT NULL,
   `codCompra` int(11) NOT NULL,
+<<<<<<< HEAD
   PRIMARY KEY (`codProdAdqui`)
+=======
+  PRIMARY KEY (`codProdAdqui`),
+   KEY `codCompra` (`codCompra`),
+  KEY `fk_productosAdquiridos_compra1_idx` (`codCompra`)
+>>>>>>> 13f3de4cb2e429b42ed35b6b985b1b4115c77e20
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -333,20 +431,35 @@ CREATE TABLE IF NOT EXISTS `promocion` (
   `codPromocion` int(11) NOT NULL AUTO_INCREMENT,
   `nombrePromocion` varchar(20) NOT NULL,
   `descripcion` varchar(50) NOT NULL,
+<<<<<<< HEAD
   `categoria` varchar(15) NOT NULL,
   `producto` varchar(15) NOT NULL,
   `unidades` int(11) NOT NULL,
   `importe` float NOT NULL,
   PRIMARY KEY (`codPromocion`)
+=======
+  `codProducto` int(11) NOT NULL,
+  `unidades` int(11) NOT NULL,
+  `importe` float NOT NULL,
+  PRIMARY KEY (`codPromocion`),
+     KEY `codProducto` (`codProducto`),
+  KEY `fk_promocion_producto1_idx` (`codProducto`)
+>>>>>>> 13f3de4cb2e429b42ed35b6b985b1b4115c77e20
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Volcado de datos para la tabla `promocion`
 --
 
+<<<<<<< HEAD
 INSERT INTO `promocion` (`codPromocion`, `nombrePromocion`, `descripcion`, `categoria`, `producto`, `unidades`, `importe`) VALUES
 (1, 'promo1', 'asdslfslfmv,cv', 'Item 1', 'Item 3', 5, 2.5),
 (2, 'promo1', 'asdfghjklñ', 'Item 1', 'Item 2', 2, 4.5);
+=======
+INSERT INTO `promocion` (`codPromocion`, `nombrePromocion`, `descripcion`, `codProducto`, `unidades`, `importe`) VALUES
+(1, 'promo1', 'asdslfslfmv,cv', 1, 5, 2.5),
+(2, 'promo2', 'asdfghjklñ', 2, 2, 4.5);
+>>>>>>> 13f3de4cb2e429b42ed35b6b985b1b4115c77e20
 
 -- --------------------------------------------------------
 
@@ -361,6 +474,11 @@ CREATE TABLE IF NOT EXISTS `proveedor` (
   `telefono` varchar(20) NOT NULL,
   `celular` varchar(15) NOT NULL,
   `numeroCuenta` varchar(20) NOT NULL,
+<<<<<<< HEAD
+=======
+  `diaPedido1` varchar(10) NOT NULL,
+  `diaPedido2` varchar(10) NULL,
+>>>>>>> 13f3de4cb2e429b42ed35b6b985b1b4115c77e20
   `estadoProveedor` int(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`codProveedor`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
@@ -369,10 +487,17 @@ CREATE TABLE IF NOT EXISTS `proveedor` (
 -- Volcado de datos para la tabla `proveedor`
 --
 
+<<<<<<< HEAD
 INSERT INTO `proveedor` (`codProveedor`, `nombreProveedor`, `direccion`, `telefono`, `celular`, `numeroCuenta`, `estadoProveedor`) VALUES
 (1, 'sdfghjk', 'sdfghjkdfghjk,', '5241', '65241', '5746d54v', 1),
 (2, 'asdfghjk', 'hjk,l.ñ', '', '', '', 1),
 (3, 'xcfvgh', 'dsfgtyhukilo', '456780', '67890''', '8790-56789', 1);
+=======
+INSERT INTO `proveedor` (`codProveedor`, `nombreProveedor`, `direccion`, `telefono`, `celular`, `numeroCuenta`,`diaPedido1`, `diaPedido2`, `estadoProveedor`) VALUES
+(1, 'guzman', 'sdfghjkdfghjk,', '5241', '65241', '5746d54v', 'Lunes', 'Viernes', 1),
+(2, 'alicorp', 'hjk,l.ñ', '', '', '','Martes', 'Jueves', 1),
+(3, 'backus', 'dsfgtyhukilo', '456780', '67890''', '8790-56789','Lunes', '', 1);
+>>>>>>> 13f3de4cb2e429b42ed35b6b985b1b4115c77e20
 
 -- --------------------------------------------------------
 
@@ -450,21 +575,39 @@ INSERT INTO `usuario` (`codUsuario`, `usuario`, `password`, `fechaRegistro`, `ti
 CREATE TABLE IF NOT EXISTS `venta` (
   `codVenta` int(11) NOT NULL AUTO_INCREMENT,
   `fechaVenta` varchar(12) NOT NULL,
+<<<<<<< HEAD
   `responsableVenta` int(4) NOT NULL,
   `codigoCliente` int(11) NOT NULL,
+=======
+  `codEmpleado` int(11) NOT NULL,
+  `codCliente` int(11) NOT NULL,
+>>>>>>> 13f3de4cb2e429b42ed35b6b985b1b4115c77e20
   `subTotalVenta` float NOT NULL,
   `descuento` float NOT NULL,
   `totalNetoVenta` float NOT NULL,
   `estadoVenta` int(1) NOT NULL DEFAULT '1',
+<<<<<<< HEAD
   PRIMARY KEY (`codVenta`)
+=======
+  PRIMARY KEY (`codVenta`),
+    KEY `codEmpleado` (`codEmpleado`),
+  KEY `fk_venta_empleado1_idx` (`codEmpleado`),
+      KEY `codCliente` (`codCliente`),
+  KEY `fk_venta_cliente1_idx` (`codCliente`)
+>>>>>>> 13f3de4cb2e429b42ed35b6b985b1b4115c77e20
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Volcado de datos para la tabla `venta`
 --
 
+<<<<<<< HEAD
 INSERT INTO `venta` (`codVenta`, `fechaVenta`, `responsableVenta`, `codigoCliente`, `subTotalVenta`, `descuento`, `totalNetoVenta`, `estadoVenta`) VALUES
 (1, '22/07/2017', 1, 1, 12.5, 2, 15.3, 1);
+=======
+INSERT INTO `venta` (`codVenta`, `fechaVenta`, `codEmpleado`, `codCliente`, `subTotalVenta`, `descuento`, `totalNetoVenta`, `estadoVenta`) VALUES
+(1, '22/07/2017', 4, 1, 12.5, 2, 15.3, 1);
+>>>>>>> 13f3de4cb2e429b42ed35b6b985b1b4115c77e20
 
 --
 -- Restricciones para tablas volcadas
@@ -488,6 +631,70 @@ ALTER TABLE `empleado`
 ALTER TABLE `recarga`
   ADD CONSTRAINT `fk_recarga_operador1` FOREIGN KEY (`codOperador`) REFERENCES `operador` (`codOperador`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
+<<<<<<< HEAD
+=======
+--
+-- Filtros para la tabla `compra`
+--
+ALTER TABLE `compra`
+  ADD CONSTRAINT `fk_compra_proveedor1` FOREIGN KEY (`codProveedor`) REFERENCES `proveedor` (`codProveedor`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+ALTER TABLE `compra`
+  ADD CONSTRAINT `fk_compra_empleado1` FOREIGN KEY (`codEmpleado`) REFERENCES `empleado` (`codEmpleado`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `productosAdquiridos`
+--
+ALTER TABLE `productosAdquiridos`
+  ADD CONSTRAINT `fk_productosAdquiridos_compra1` FOREIGN KEY (`codCompra`) REFERENCES `compra` (`codCompra`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `precios`
+--
+ALTER TABLE `precios`
+  ADD CONSTRAINT `fk_precios_producto1` FOREIGN KEY (`codProducto`) REFERENCES `producto` (`codProducto`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `promocion`
+--
+ ALTER TABLE `promocion`
+  ADD CONSTRAINT `fk_promocion_producto1` FOREIGN KEY (`codProducto`) REFERENCES `producto` (`codProducto`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+
+--
+-- Filtros para la tabla `comprobante`
+--
+ ALTER TABLE `comprobante`
+  ADD CONSTRAINT `fk_comprobante_venta1` FOREIGN KEY (`codVenta`) REFERENCES `venta` (`codVenta`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `venta`
+--
+ ALTER TABLE `venta`
+  ADD CONSTRAINT `fk_venta_empleado1` FOREIGN KEY (`codEmpleado`) REFERENCES `empleado` (`codEmpleado`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+
+  --
+-- Filtros para la tabla `venta`
+--
+ ALTER TABLE `venta`
+  ADD CONSTRAINT `fk_venta_cliente1` FOREIGN KEY (`codCliente`) REFERENCES `cliente` (`codCliente`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+
+  --
+-- Filtros para la tabla `producto`
+--
+ ALTER TABLE `producto`
+  ADD CONSTRAINT `fk_producto_categoria1` FOREIGN KEY (`codCategoria`) REFERENCES `categoria` (`codCategoria`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+   ALTER TABLE `producto`
+  ADD CONSTRAINT `fk_producto_proveedor1` FOREIGN KEY (`codProveedor`) REFERENCES `proveedor` (`codProveedor`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+   ALTER TABLE `producto`
+  ADD CONSTRAINT `fk_producto_empleado1` FOREIGN KEY (`codEmpleado`) REFERENCES `empleado` (`codEmpleado`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- -------------------------------------------------------------
+>>>>>>> 13f3de4cb2e429b42ed35b6b985b1b4115c77e20
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
